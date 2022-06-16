@@ -147,6 +147,13 @@ function App() {
               Gögn frá{" "}
               <a href="https://ensk.is" className="underline">
                 ensk.is
+              </a>{" "}
+              - kóði á{" "}
+              <a
+                href="https://github.com/jokull/enski-web"
+                className="underline"
+              >
+                github
               </a>
             </h2>
           </div>
