@@ -1,5 +1,5 @@
-# enski
+# 📗 enski
 
-As-fast-as-possible search in the [ensk.is](https://ensk.is) English > Icelandic dictionary.
+As-fast-as-possible search in the amazing (and liberally licensed) [ensk.is](https://ensk.is) English > Icelandic dictionary.
 
-👉🏻 [Visit](https://ensk-web.pages.dev)
+👉🏻 [Check it out](https://enski.solberg.is/)
