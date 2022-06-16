@@ -150,7 +150,7 @@ function App() {
               </a>{" "}
               - kóði á{" "}
               <a
-                href="https://github.com/jokull/enski-web"
+                href="https://github.com/jokull/ensk-web"
                 className="underline"
               >
                 github
