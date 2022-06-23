@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import classNames from "classnames";
 import initSqlJs, { Database } from "sql.js";
 import wasmURL from "./sql-wasm-fts5.wasm?url";
@@ -43,11 +43,11 @@ interface Row {
 
 function random(db: Database): Row {
   const stmt = db.prepare(`
-  select
-    id, word, definition, ipa_uk, ipa_us
-  from
-    dictionary
-  order by RANDOM() limit 1
+    select
+      id, word, definition, ipa_uk, ipa_us
+    from
+      dictionary
+    order by RANDOM() limit 1
   `);
   const response = stmt.getAsObject({});
   stmt.free();
@@ -101,9 +101,14 @@ function Results({ results }: { results: Row[] }) {
 }
 
 function Search({ db }: { db: Database }) {
+  const ref = useRef<HTMLInputElement>(null);
   const [initial, setInitial] = useState<Row | null>(random(db));
   const [query, setQuery] = useState(initial?.word || "");
   const results = useMemo(() => (query ? search(db, query) : []), [query]);
+  useEffect(() => {
+    ref.current?.focus();
+    ref.current?.select();
+  }, [])
   return (
     <div className="w-full">
       <div className="relative">
@@ -111,6 +116,7 @@ function Search({ db }: { db: Database }) {
           <SVGSearch className="w-6 h-6 text-neutral-400 group-focus-within:text-neutral-600" />
         </div>
         <input
+          ref={ref}
           className={classNames(
             "rounded-lg text-xl px-3 py-2 w-full pl-12",
             "bg-neutral-200 focus:bg-neutral-100",
